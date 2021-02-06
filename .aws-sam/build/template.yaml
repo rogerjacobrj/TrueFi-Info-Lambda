@@ -21,3 +21,25 @@ Resources:
           Properties:
             Path: /logs
             Method: get
+  GetLoansFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Loans.getLoans
+      CodeUri: GetLoansFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /loans
+            Method: post
+  GetVoteEventsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: VoteEvents.getAllVotes
+      CodeUri: GetVoteEventsFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /votes
+            Method: post
