@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: 'testing
+
+  Sample SAM Template for testing
+
+  '
+Globals:
+  Function:
+    Runtime: nodejs12.x
+    Timeout: 600
+Resources:
+  GetLogsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Logs.getLogs
+      CodeUri: GetLogsFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /logs
+            Method: get
+  GetLoansFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Loans.getLoans
+      CodeUri: GetLoansFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /loans
+            Method: post
+  GetVoteEventsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: VoteEvents.getAllVotes
+      CodeUri: GetVoteEventsFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /votes
+            Method: post
