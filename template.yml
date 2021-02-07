@@ -1,11 +1,10 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
   testing
 
   Sample SAM Template for testing
-  
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+
 Globals:
   Function:
     Runtime: nodejs12.x
@@ -13,35 +12,57 @@ Globals:
 
 Resources:
   GetLogsFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function
     Properties:
       Handler: Logs.getLogs
       CodeUri: api/
       Events:
         GetLoan:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api
           Properties:
             Path: /logs
             Method: get
   GetLoansFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function
     Properties:
       Handler: Loans.getLoans
       CodeUri: api/
       Events:
         GetLoan:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api
           Properties:
             Path: /loans
             Method: post
   GetVoteEventsFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Type: AWS::Serverless::Function
     Properties:
       Handler: VoteEvents.getAllVotes
       CodeUri: api/
       Events:
         GetLoan:
-          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Type: Api
           Properties:
             Path: /votes
             Method: post
+  GetTfiPriceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: TfiPrice.getTfiPrice
+      CodeUri: api/
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /tfi-price
+            Method: get
+  GetTruPriceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: TruPrice.getTruPrice
+      CodeUri: api/
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /tru-price
+            Method: get

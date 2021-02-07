@@ -43,3 +43,25 @@ Resources:
           Properties:
             Path: /votes
             Method: post
+  GetTfiPriceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: TfiPrice.getTfiPrice
+      CodeUri: GetTfiPriceFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /tfi-price
+            Method: get
+  GetTruPriceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: TruPrice.getTruPrice
+      CodeUri: GetTruPriceFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /tru-price
+            Method: get
