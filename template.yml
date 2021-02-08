@@ -1,9 +1,9 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  testing
+  True-Fi
 
-  Sample SAM Template for testing
+  SAM Template for True-Fi Lambda Functions
 
 Globals:
   Function:
@@ -65,4 +65,26 @@ Resources:
           Type: Api
           Properties:
             Path: /tru-price
+            Method: get
+  GetApyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Apy.getApy
+      CodeUri: api/
+      Events:
+        GetApy:
+          Type: Api
+          Properties:
+            Path: /apy
+            Method: post
+  GetTruFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Tru.getTru
+      CodeUri: api/
+      Events:
+        GetTru:
+          Type: Api
+          Properties:
+            Path: /tru
             Method: get
