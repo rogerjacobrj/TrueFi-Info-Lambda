@@ -87,3 +87,14 @@ Resources:
           Properties:
             Path: /tru
             Method: get
+  GetPoolValuesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: PoolValues.getPoolValues
+      CodeUri: GetPoolValuesFunction
+      Events:
+        GetTru:
+          Type: Api
+          Properties:
+            Path: /pool-values
+            Method: get
