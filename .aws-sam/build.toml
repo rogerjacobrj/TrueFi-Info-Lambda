@@ -6,6 +6,6 @@ codeuri = "api/"
 runtime = "nodejs12.x"
 source_md5 = ""
 packagetype = "Zip"
-functions = ["GetLogsFunction", "GetLoansFunction", "GetVoteEventsFunction"]
+functions = ["GetLogsFunction", "GetLoansFunction", "GetVoteEventsFunction", "GetTfiPriceFunction", "GetTruPriceFunction", "GetApyFunction", "GetTruFunction", "GetPoolValuesFunction"]
 
 [layer_build_definitions]

@@ -1,8 +1,8 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
-Description: 'testing
+Description: 'True-Fi
 
-  Sample SAM Template for testing
+  SAM Template for True-Fi Lambda Functions
 
   '
 Globals:
@@ -43,3 +43,58 @@ Resources:
           Properties:
             Path: /votes
             Method: post
+  GetTfiPriceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: TfiPrice.getTfiPrice
+      CodeUri: GetTfiPriceFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /tfi-price
+            Method: get
+  GetTruPriceFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: TruPrice.getTruPrice
+      CodeUri: GetTruPriceFunction
+      Events:
+        GetLoan:
+          Type: Api
+          Properties:
+            Path: /tru-price
+            Method: get
+  GetApyFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Apy.getApy
+      CodeUri: GetApyFunction
+      Events:
+        GetApy:
+          Type: Api
+          Properties:
+            Path: /apy
+            Method: post
+  GetTruFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Tru.getTru
+      CodeUri: GetTruFunction
+      Events:
+        GetTru:
+          Type: Api
+          Properties:
+            Path: /tru
+            Method: get
+  GetPoolValuesFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: PoolValues.getPoolValues
+      CodeUri: GetPoolValuesFunction
+      Events:
+        GetTru:
+          Type: Api
+          Properties:
+            Path: /pool-values
+            Method: get
