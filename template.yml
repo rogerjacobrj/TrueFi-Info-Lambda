@@ -17,7 +17,7 @@ Resources:
       Handler: Logs.getLogs
       CodeUri: api/
       Events:
-        GetLoan:
+        GetLogs:
           Type: Api
           Properties:
             Path: /logs
@@ -28,7 +28,7 @@ Resources:
       Handler: Loans.getLoans
       CodeUri: api/
       Events:
-        GetLoan:
+        GetLoans:
           Type: Api
           Properties:
             Path: /loans
@@ -39,7 +39,7 @@ Resources:
       Handler: VoteEvents.getAllVotes
       CodeUri: api/
       Events:
-        GetLoan:
+        GetLVotes:
           Type: Api
           Properties:
             Path: /votes
@@ -50,7 +50,7 @@ Resources:
       Handler: TfiPrice.getTfiPrice
       CodeUri: api/
       Events:
-        GetLoan:
+        GetTfiPrice:
           Type: Api
           Properties:
             Path: /tfi-price
@@ -61,7 +61,7 @@ Resources:
       Handler: TruPrice.getTruPrice
       CodeUri: api/
       Events:
-        GetLoan:
+        GetTruPrice:
           Type: Api
           Properties:
             Path: /tru-price
@@ -94,8 +94,29 @@ Resources:
       Handler: PoolValues.getPoolValues
       CodeUri: api/
       Events:
-        GetTru:
+        GetPoolValues:
           Type: Api
           Properties:
             Path: /pool-values
             Method: get
+  GetEventsHelperFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Pool/GetPoolValueChart.index
+      CodeUri: api/
+      Layers:
+        - !Ref GetEventsHelper
+      Events:
+        GetEventsHelpers:
+          Type: Api
+          Properties:
+            Path: /pool-value-chart
+            Method: get
+            
+  GetEventsHelper:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: GetEvents
+      ContentUri: layers/nodejs.zip
+      CompatibleRuntimes:
+        - nodejs12.x
