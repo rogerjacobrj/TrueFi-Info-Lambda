@@ -1,15 +1,16 @@
 {
-  "name": "api",
+  "name": "nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "constants.js",
+  "dependencies": {
+    "ethers": "^5.0.30"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "ethers": "^5.0.29"
-  }
+  "license": "ISC"
 }
