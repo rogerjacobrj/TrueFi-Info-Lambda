@@ -1,8 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  True-Fi
-
   SAM Template for True-Fi Lambda Functions
 
 Globals:
@@ -99,24 +97,37 @@ Resources:
           Properties:
             Path: /pool-values
             Method: get
-  GetEventsHelperFunction:
+  GetPoolValueChartDataFunction:
     Type: AWS::Serverless::Function
     Properties:
       Handler: Pool/GetPoolValueChart.index
       CodeUri: api/
       Layers:
-        - !Ref GetEventsHelper
+        - !Ref UtilityHelpers
       Events:
-        GetEventsHelpers:
+        GetPoolValueHelpers:
           Type: Api
           Properties:
             Path: /pool-value-chart
             Method: get
+  GetPoolInteractionChartDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Pool/GetInteractionChart.index
+      CodeUri: api/
+      Layers:
+        - !Ref UtilityHelpers
+      Events:
+        GetPoolInteractionHelpers:
+          Type: Api
+          Properties:
+            Path: /pool-interaction-chart
+            Method: get
             
-  GetEventsHelper:
+  UtilityHelpers:
     Type: AWS::Serverless::LayerVersion
     Properties:
-      LayerName: GetEvents
+      LayerName: UtilityLayer
       ContentUri: layers/nodejs.zip
       CompatibleRuntimes:
         - nodejs12.x
