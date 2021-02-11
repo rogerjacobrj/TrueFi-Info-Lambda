@@ -28,8 +28,8 @@ exports.getLogs = async (event) => {
     try {
         logs = await provider.getLogs(logsParam);
     } catch (error) {
-        console.log(err);
-        return err;
+        console.log(error);
+        return error;
     }
 
     return {

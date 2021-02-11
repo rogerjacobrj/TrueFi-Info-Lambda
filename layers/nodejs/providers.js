@@ -1,4 +1,8 @@
-const { ethers, providers, Wallet } = require("ethers");
+const {
+    ethers,
+    providers,
+    Wallet
+} = require("ethers");
 
 const connect = () => {
     // get network from args

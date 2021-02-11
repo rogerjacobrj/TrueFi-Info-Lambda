@@ -125,8 +125,14 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# toml file
+# toml & yml files
 .aws-sam/
 samconfig.toml
+deploy.yml
+
+# lambda layers
+/layers/nodejs/node_modules
+/layers/nodejs/package-lock.json
+/layers/*.zip
 
 # End of https://www.gitignore.io/api/osx,node,linux,windows

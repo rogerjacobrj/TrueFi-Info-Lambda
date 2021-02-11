@@ -1,8 +1,6 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  True-Fi
-
   SAM Template for True-Fi Lambda Functions
 
 Globals:
@@ -17,7 +15,7 @@ Resources:
       Handler: Logs.getLogs
       CodeUri: api/
       Events:
-        GetLoan:
+        GetLogs:
           Type: Api
           Properties:
             Path: /logs
@@ -28,7 +26,7 @@ Resources:
       Handler: Loans.getLoans
       CodeUri: api/
       Events:
-        GetLoan:
+        GetLoans:
           Type: Api
           Properties:
             Path: /loans
@@ -39,7 +37,7 @@ Resources:
       Handler: VoteEvents.getAllVotes
       CodeUri: api/
       Events:
-        GetLoan:
+        GetLVotes:
           Type: Api
           Properties:
             Path: /votes
@@ -50,7 +48,7 @@ Resources:
       Handler: TfiPrice.getTfiPrice
       CodeUri: api/
       Events:
-        GetLoan:
+        GetTfiPrice:
           Type: Api
           Properties:
             Path: /tfi-price
@@ -61,7 +59,7 @@ Resources:
       Handler: TruPrice.getTruPrice
       CodeUri: api/
       Events:
-        GetLoan:
+        GetTruPrice:
           Type: Api
           Properties:
             Path: /tru-price
@@ -94,8 +92,42 @@ Resources:
       Handler: PoolValues.getPoolValues
       CodeUri: api/
       Events:
-        GetTru:
+        GetPoolValues:
           Type: Api
           Properties:
             Path: /pool-values
             Method: get
+  GetPoolValueChartDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Pool/GetPoolValueChart.index
+      CodeUri: api/
+      Layers:
+        - !Ref UtilityHelpers
+      Events:
+        GetPoolValueHelpers:
+          Type: Api
+          Properties:
+            Path: /pool-value-chart
+            Method: get
+  GetPoolInteractionChartDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Pool/GetInteractionChart.index
+      CodeUri: api/
+      Layers:
+        - !Ref UtilityHelpers
+      Events:
+        GetPoolInteractionHelpers:
+          Type: Api
+          Properties:
+            Path: /pool-interaction-chart
+            Method: get
+            
+  UtilityHelpers:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: UtilityLayer
+      ContentUri: layers/nodejs.zip
+      CompatibleRuntimes:
+        - nodejs12.x
