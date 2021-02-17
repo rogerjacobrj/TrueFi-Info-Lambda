@@ -123,6 +123,19 @@ Resources:
           Properties:
             Path: /pool-interaction-chart
             Method: get
+  GetPoolCompositionChartDataFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: Pool/GetCompositionChart.index
+      CodeUri: api/
+      Layers:
+        - !Ref UtilityHelpers
+      Events:
+        GetPoolCompositionHelpers:
+          Type: Api
+          Properties:
+            Path: /pool-composition-chart
+            Method: get
             
   UtilityHelpers:
     Type: AWS::Serverless::LayerVersion

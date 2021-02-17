@@ -12,7 +12,7 @@ const logsHelper = {
             logsParam = {
                 address: contracts.tfi,
                 topics: [ethers.utils.id(topic)],
-                fromBlock: 0,
+                fromBlock: 11280398,
                 toBlock: "latest"
             }
         } else if (type === "filter") {
