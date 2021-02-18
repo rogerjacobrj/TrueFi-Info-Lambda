@@ -1,3 +1,5 @@
+const tokenHelper = require("/opt/nodejs/tokenHelper");
+
 const helper = {
     getEvents: async (type, logs, index = null, sign = null) => {
         let total = 0;
@@ -14,14 +16,16 @@ const helper = {
                 result.push({
                     total: total,
                     marginChange: valueNum,
-                    blockNumber: logs[i]['blockNumber']
+                    blockNumber: logs[i]['blockNumber'],
+                    timestamp: tokenHelper.getTimestamp(logs[i].blockNumber)
                 });
             } else {
                 const value = parseInt(logs[i]['data'].substr(2, 64), 16) / 1e18;
                 result.push({
                     total: 0,
                     marginChange: value * sign,
-                    blockNumber: logs[i]['blockNumber']
+                    blockNumber: logs[i]['blockNumber'],
+                    timestamp: tokenHelper.getTimestamp(logs[i].blockNumber)
                 })
             }
         }

@@ -73,6 +73,9 @@ const tokenHelper = {
     loanTokenBalance: async () => {
         let loanTokens = await tokenHelper.loanTokenFinder();
         return loanTokens;
+    },
+    getTimestamp: (blockNumber) => {
+        return 1605682163 + (blockNumber - 11280398) * 14;
     }
 };
 

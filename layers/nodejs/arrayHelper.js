@@ -1,3 +1,5 @@
+const tokenHelper = require("/opt/nodejs/tokenHelper");
+
 const arrayHelper = {
     mergeArray: (array) => {
         array.sort((a, b) => (a.blockNumber > b.blockNumber) ? 1 : ((b.blockNumber > a.blockNumber) ? -1 : 0));
@@ -20,6 +22,7 @@ const arrayHelper = {
                 data: {
                     name: name,
                     balance: array[i].total.toFixed(0),
+                    timestamp: tokenHelper.getTimestamp(array[i].blockNumber)
                 },
                 blockNumber: array[i].blockNumber
             })
@@ -36,7 +39,8 @@ const arrayHelper = {
 
         const obj = {
             [array[0].data.name]: array[0].data.balance,
-            blockNumber: array[0].blockNumber
+            blockNumber: array[0].blockNumber,
+            timestamp: tokenHelper.getTimestamp(array[0].blockNumber)
         };
 
         loanTokenNameSet.forEach(name => {
@@ -55,7 +59,8 @@ const arrayHelper = {
         for (let i = 1; i < array.length; i++) {
             const obj = {
                 [array[i].data.name]: array[i].data.balance,
-                blockNumber: array[i].blockNumber
+                blockNumber: array[i].blockNumber,
+                timestamp: tokenHelper.getTimestamp(array[i].blockNumber)
             };
 
             loanTokenNameSet.forEach(name => {
