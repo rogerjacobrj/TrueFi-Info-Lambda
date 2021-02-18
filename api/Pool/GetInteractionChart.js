@@ -1,21 +1,21 @@
-// const helper = require("/opt/nodejs/eventHelper");
-const helper = require("./eventHelper");
-// const logsHelper = require("/opt/nodejs/logs");
-const logsHelper = require("./logs");
-// const mergeHelper = require("/opt/nodejs/mergeArray");
-const mergeHelper = require("./mergeArray");
+const eventHelper = require("/opt/nodejs/eventHelper");
+// const eventHelper = require("./eventHelper");
+const logsHelper = require("/opt/nodejs/logs");
+// const logsHelper = require("./logs");
+const arrayHelper = require("/opt/nodejs/arrayHelper");
+// const arrayHelper = require("./arrayHelper");
 
 exports.index = async (event) => {
     let flushedLogs, flushedJoined, pulledLogs, pulledJoined, merged;
 
     flushedLogs = await logsHelper.getLogs("topic", "Flushed(uint256)");
     if (flushedLogs) {
-        flushedJoined = await helper.getEvents(flushedLogs, 0);
+        flushedJoined = await eventHelper.getEvents("topic", flushedLogs, 0);
     }
 
     pulledLogs = await logsHelper.getLogs("topic", "Pulled(uint256)");
     if (pulledLogs) {
-        pulledJoined = await helper.getEvents(pulledLogs, 0);
+        pulledJoined = await eventHelper.getEvents("topic", pulledLogs, 0);
     }
 
     if (pulledJoined) {
@@ -24,7 +24,7 @@ exports.index = async (event) => {
         });
     }
 
-    merged = mergeHelper.merge([...flushedJoined, ...pulledJoined]);
+    merged = arrayHelper.mergeArray([...flushedJoined, ...pulledJoined]);
 
     return {
         statusCode: 200,
