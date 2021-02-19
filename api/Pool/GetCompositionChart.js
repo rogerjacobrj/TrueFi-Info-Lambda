@@ -11,7 +11,10 @@ const tokenHelper = require("/opt/nodejs/tokenHelper");
 
 const ethers = require("ethers");
 const connect = require("/opt/nodejs/providers");
+// const connect = require("../utils/providers");
 const contracts = require("/opt/nodejs/constants");
+// const contracts = require("../utils/constants");
+
 
 const tusdAbi = [
     "event Transfer(address indexed src, address indexed dst, uint val)",
@@ -94,6 +97,8 @@ exports.index = async (event) => {
                     data: {
                         name: loanTokenName,
                         balance: singleLoanHistoricalBal[i].total.toFixed(0),
+                        timestamp: tokenHelper.getTimestamp(singleLoanHistoricalBal[i].blockNumber)
+
                     },
                     blockNumber: singleLoanHistoricalBal[i].blockNumber
                 });
