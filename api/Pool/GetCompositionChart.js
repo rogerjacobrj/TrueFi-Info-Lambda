@@ -1,20 +1,12 @@
-const eventHelper = require("/opt/nodejs/eventHelper");
-// const eventHelper = require("./eventHelper");
-const logsHelper = require("/opt/nodejs/logs");
-// const logsHelper = require("./logs");
-const arrayHelper = require("/opt/nodejs/arrayHelper");
-// const arrayHelper = require("./arrayHelper");
-const compositionLogs = require("/opt/nodejs/compositionLogs");
-// const compositionLogs = require("./compositionLogs");
-const tokenHelper = require("/opt/nodejs/tokenHelper");
-// const tokenHelper = require("./tokenHelper");
-
 const ethers = require("ethers");
 const connect = require("/opt/nodejs/providers");
-// const connect = require("../utils/providers");
 const contracts = require("/opt/nodejs/constants");
-// const contracts = require("../utils/constants");
 
+const eventHelper = require("/opt/nodejs/eventHelper");
+const logsHelper = require("/opt/nodejs/logs");
+const arrayHelper = require("/opt/nodejs/arrayHelper");
+const compositionLogs = require("/opt/nodejs/compositionLogs");
+const tokenHelper = require("/opt/nodejs/tokenHelper");
 
 const tusdAbi = [
     "event Transfer(address indexed src, address indexed dst, uint val)",

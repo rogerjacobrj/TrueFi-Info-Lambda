@@ -1,6 +1,6 @@
 const ethers = require("ethers");
-const connect = require("./utils/providers");
-const contracts = require("./utils/constants");
+const connect = require("/opt/nodejs/providers");
+const contracts = require("/opt/nodejs/constants");
 
 const [, provider, wallet] = connect();
 
