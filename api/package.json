@@ -9,7 +9,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "ethers": "^5.0.29"
-  }
+  "dependencies": {}
 }

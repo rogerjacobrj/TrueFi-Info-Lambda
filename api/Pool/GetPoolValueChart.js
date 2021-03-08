@@ -1,9 +1,6 @@
 const eventHelper = require("/opt/nodejs/eventHelper");
-// const eventHelper = require("./eventHelper");
 const logsHelper = require("/opt/nodejs/logs");
-// const logsHelper = require("./logs");
 const arrayHelper = require("/opt/nodejs/arrayHelper");
-// const arrayHelper = require("./arrayHelper");
 
 exports.index = async (event) => {
     let joinedLogs, poolJoined, exitedLogs, poolExited, merged;

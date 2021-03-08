@@ -1,5 +1,6 @@
 const ethers = require("ethers");
-const connect = require("./utils/providers");
+const connect = require("/opt/nodejs/providers");
+
 const [, provider, wallet] = connect();
 
 const abi = ['function borrower() public view returns (address)',
